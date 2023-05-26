@@ -1,0 +1,34 @@
+service: serverless
+provider:
+  name: aws
+  region: ap-south-1
+  timeout: 30
+  stage: dev
+  
+plugins:
+  - serverless-offline
+functions: 
+
+  users:
+    handler: controllers/register.registerUser
+      events:
+        - http:
+          path: user
+          method: post
+          cors: true
+
+
+  # userslist:
+  #   handler: controller/user.getUser
+  #   events: 
+  #     - http: 
+  #         path: user
+  #         method: get
+  #         cors: true
+
+  # studentslist:
+  #   handler: controller/student.assign
+  #   events: 
+  #     - http: 
+  #         path: student/assign
+  #         method: post
